@@ -1,7 +1,12 @@
 ---
 title: "Project 1"
 author: 
-  - name: Siyu Zou
+  - name: Stephanie Hicks
+    url: https://stephaniehicks.com
+    affiliation: Department of Biostatistics, Johns Hopkins
+    affiliation_url: https://publichealth.jhu.edu
+description: "Building a website and practicing with command-line tools"
+date: 2023-10-26
 categories: [project 1, projects]
 knitr: true
 ---
@@ -88,7 +93,8 @@ As you read the introductions from other folks in the class, feel free to commen
 2.  Create a directory to download the data. The top level directory should be called `raw_data` and there should be a sub-level directory called `fastq`. The command you write should force the creation of both directories at the same time if either of them do not exist yet.
 
 ::: callout-warning
-In my Windows computer,it doesn't support wildcards like \* for remote file downloads using wget. So I specified the URLs of the files that I required to download
+In my Windows computer,it doesn't support wildcards like * for remote file downloads using wget.
+So I specified the URLs of the files that I required to download
 :::
 
 ```{bash}
@@ -107,30 +113,26 @@ wget "https://raw.githubusercontent.com/stephaniehicks/jhustatprogramming2023/ma
 wget "https://raw.githubusercontent.com/stephaniehicks/jhustatprogramming2023/main/data/SRR1039513_subset_1.fastq"
 ```
 
-3.  Move all the `.fastq` files into the `fastq` sub-level directory.
 
+3.  Move all the `.fastq` files into the `fastq` sub-level directory.
 ```{bash}
 cd ~/Desktop/
 mv *.fastq raw_data/fastq/
 ```
 
-4.  List all `.fastq` files that end in 12 or 13 in the `fastq` directory
-
+4. List all `.fastq` files that end in 12 or 13 in the `fastq` directory
 ```{bash}
 cd ~/Desktop/
 ls raw_data/fastq/*12_subset_1.fastq
 ls raw_data/fastq/*13_subset_1.fastq
 ```
-
-5.  Search for the string `NNNN` in the `SRR1039512_subset_1.fastq` file. In addition to returning the matched line in the `.fastq` file, your output should also return the two lines before and the four lines after the matching line.
-
+5. Search for the string `NNNN` in the `SRR1039512_subset_1.fastq` file. In addition to returning the matched line in the `.fastq` file, your output should also return the two lines before and the four lines after the matching line. 
 ```{bash}
 cd ~/Desktop/
 grep -B 2 -A 4 NNNN raw_data/fastq/SRR1039512_subset_1.fastq 
 ```
 
-6.  Write a for loop in the shell that iterates over each `.fastq` file. For each `.fastq` file, do the following. In the first 1000 rows for each file, count the number of lines where the "\@" symbol appears. Your final output should be four numbers printed to the screen.
-
+6. Write a for loop in the shell that iterates over each `.fastq` file. For each `.fastq` file, do the following. In the first 1000 rows for each file, count the number of lines where the "@" symbol appears. Your final output should be four numbers printed to the screen. 
 ```{bash}
 cd ~/Desktop/
 for file in raw_data/fastq/*.fastq
